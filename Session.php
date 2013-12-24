@@ -1,12 +1,14 @@
 <?php
-
 namespace FourOneOne;
+require_once("SessionHandler.php");
 
 class Session
 {
   static $instance;
 
   public function __construct(){
+    $handler = new SessionHandler();
+    session_set_save_handler($handler, true);
     @session_start();
   }
 
