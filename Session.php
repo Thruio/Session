@@ -10,7 +10,7 @@ class Session
     session_start();
   }
 
-  public function get_session(){
+  static public function get_session(){
     if(!self::$instance instanceof Session){
       self::$instance = new Session();
     }
