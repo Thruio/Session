@@ -8,8 +8,12 @@ class Session
 
   public function __construct(){
     $handler = new SessionHandler();
+    if(session_id()){
+      session_destroy();
+    }
+    session_cache_limiter(false);
     session_set_save_handler($handler, true);
-    @session_start();
+    session_start();
   }
 
   static public function get_session(){

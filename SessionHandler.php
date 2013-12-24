@@ -16,7 +16,14 @@ class SessionHandler implements \SessionHandlerInterface
   public function read($id){
     /* @var $session \session_model */
     $session = \session_model::search()->where('php_id', $id)->execOne();
-    return unserialize($session->data);
+    if(!$session instanceof \session_model){
+      $session = new \session_model();
+    }
+    if($session->data){
+      return unserialize($session->data);
+    }else{
+      return false;
+    }
   }
 
   public function write($id, $data){
@@ -26,9 +33,10 @@ class SessionHandler implements \SessionHandlerInterface
       $session = new \session_model();
     }
     $session->php_id = $id;
-    $session->data = unserialize($data);
+    $session->data = serialize($data);
     $session->created = date("Y-m-d H:i:s");
-    return $session->save();
+    $session->save();
+    return true;
   }
 
   public function destroy($id){
