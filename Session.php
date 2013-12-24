@@ -7,10 +7,10 @@ class Session
   static $instance;
 
   public function __construct(){
-    session_start();
+    @session_start();
   }
 
-  public function get_session(){
+  static public function get_session(){
     if(!self::$instance instanceof Session){
       self::$instance = new Session();
     }
@@ -25,11 +25,28 @@ class Session
     return Session::get_session()->_set($key, $value);
   }
 
+  static public function dispose($key){
+    return Session::get_session()->_dispose($key);
+  }
+
   public function _get($key){
-    return $_SESSION[$key];
+    if(isset($_SESSION[$key])){
+      return unserialize($_SESSION[$key]);
+    }else{
+      return false;
+    }
   }
 
   public function _set($key, $value){
-    return $_SESSION[$key] = $value;
+    return $_SESSION[$key] = serialize($value);
+  }
+
+  public function _dispose($key){
+    if(isset($_SESSION[$key])){
+      unset($_SESSION[$key]);
+      return true;
+    }else{
+      return false;
+    }
   }
 }
