@@ -1,0 +1,19 @@
+{
+  "name"       : "fouroneone/Session",
+  "description": "Sessions handler",
+  "authors"    : [
+    {
+      "name" : "Matthew Baggett",
+      "email": "matthew@fouroneone.us"
+    }
+  ],
+  "require"    : {
+
+  },
+  "autoload"   : {
+    "psr-0": {
+      "FourOneOne\\Session\\": ""
+    }
+  },
+  "target-dir" : "FourOneOne/Session"
+}
