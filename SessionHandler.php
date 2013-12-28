@@ -26,9 +26,9 @@ class SessionHandler implements \SessionHandlerInterface
       $session = new \session_model();
     }
     $session->php_id = $id;
-    $session->data = unserialize($data);
+    $session->data = serialize($data);
     $session->created = date("Y-m-d H:i:s");
-    return $session->save();
+    return true;
   }
 
   public function destroy($id){

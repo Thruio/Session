@@ -7,8 +7,6 @@ class Session
   static $instance;
 
   public function __construct(){
-    $handler = new SessionHandler();
-    session_set_save_handler($handler, true);
     @session_start();
   }
 
@@ -40,7 +38,9 @@ class Session
   }
 
   public function _set($key, $value){
-    return $_SESSION[$key] = serialize($value);
+    $_SESSION[$key] = serialize($value);
+    //echo "<pre>"; var_dump($_SESSION);exit;
+    return true;
   }
 
   public function _dispose($key){
