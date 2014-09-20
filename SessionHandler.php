@@ -1,6 +1,6 @@
 <?php
 
-namespace FourOneOne;
+namespace Thru;
 
 class SessionHandler implements \SessionHandlerInterface
 {

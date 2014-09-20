@@ -1,5 +1,5 @@
 <?php
-namespace FourOneOne;
+namespace Thru;
 require_once("SessionHandler.php");
 
 class Session
