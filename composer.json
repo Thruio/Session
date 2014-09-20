@@ -1,10 +1,10 @@
 {
-  "name"       : "fouroneone/session",
+  "name"       : "thru.io/session",
   "description": "Sessions handler",
   "authors"    : [
     {
       "name" : "Matthew Baggett",
-      "email": "matthew@fouroneone.us"
+      "email": "matthew@baggett.me"
     }
   ],
   "require"    : {
@@ -12,8 +12,7 @@
   },
   "autoload"   : {
     "psr-0": {
-      "FourOneOne\\Session\\": ""
+      "Thruio\\Session\\": ""
     }
-  },
-  "target-dir" : "FourOneOne/Session"
+  }
 }
