@@ -1,6 +1,5 @@
 <?php
-namespace Thru;
-require_once("SessionHandler.php");
+namespace Thru\Session;
 
 class Session
 {
