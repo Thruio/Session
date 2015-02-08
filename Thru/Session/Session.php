@@ -4,9 +4,16 @@ namespace Thru\Session;
 class Session
 {
   static $instance;
+  const lifetime = 86400;
 
   public function __construct(){
+    // server should keep session data for AT LEAST 1 day
+    ini_set('session.gc_maxlifetime', Session::lifetime);
 
+    // each client should remember their session id for EXACTLY 1 day
+    session_set_cookie_params(Session::lifetime);
+
+    // Begin the Session
     @session_start();
   }
 
