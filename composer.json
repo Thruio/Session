@@ -14,7 +14,7 @@
     }
   ],
   "require"    : {
-    "thru.io/active_record": "~0.2"
+    "thru.io/active_record": ">=0.2"
   },
   "autoload"   : {
     "psr-4": {
