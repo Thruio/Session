@@ -17,9 +17,6 @@ class Session
 
     // Begin the Session
     @session_start();
-    
-    $this->created = date("Y-m-d H:i:s");
-    $this->updated = date("Y-m-d H:i:s");
   }
 
   static public function get_session(){
