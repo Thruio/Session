@@ -14,7 +14,7 @@ use \Thru\ActiveRecord\ActiveRecord;
  * @var $click INTEGER
  * @var $created DATETIME
  * @var $updated DATETIME
- * @var $delted ENUM("Yes","No")
+ * @var $deleted ENUM("Yes","No")
  */
 class SessionModel extends ActiveRecord{
   protected $_table = "sessions";
