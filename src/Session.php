@@ -3,7 +3,7 @@ namespace Thru\Session;
 
 class Session
 {
-  static $instance;
+  private static $_instance;
   const lifetime = 86400;
 
   public function __construct(){
@@ -13,15 +13,20 @@ class Session
     // each client should remember their session id for EXACTLY 1 day
     session_set_cookie_params(Session::lifetime);
 
+    session_set_save_handler(new SessionHandler());
+
     // Begin the Session
     @session_start();
+    
+    $this->created = date("Y-m-d H:i:s");
+    $this->updated = date("Y-m-d H:i:s");
   }
 
   static public function get_session(){
-    if(!self::$instance instanceof Session){
-      self::$instance = new Session();
+    if(!self::$_instance instanceof Session){
+      self::$_instance = new Session();
     }
-    return self::$instance;
+    return self::$_instance;
   }
 
   static public function get($key){

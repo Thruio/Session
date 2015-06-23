@@ -7,12 +7,23 @@
       "email": "matthew@baggett.me"
     }
   ],
+  "repositories": [
+    {
+      "url": "https://github.com/Thruio/ActiveRecord.git",
+      "type": "git"
+    }
+  ],
   "require"    : {
-
+    "thru.io/active_record": "~0.2"
   },
   "autoload"   : {
-    "psr-0": {
-      "Thru\\Session\\": ""
+    "psr-4": {
+      "Thru\\Session\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Thru\\Session\\Test\\": "tests/"
     }
   }
 }
