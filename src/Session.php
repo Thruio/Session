@@ -48,7 +48,6 @@ class Session
 
   public function _set($key, $value){
     $_SESSION[$key] = serialize($value);
-    //echo "<pre>"; var_dump($_SESSION);exit;
     return true;
   }
 
