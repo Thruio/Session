@@ -16,29 +16,32 @@ use \Thru\ActiveRecord\ActiveRecord;
  * @var $updated DATETIME
  * @var $deleted ENUM("Yes","No")
  */
-class SessionModel extends ActiveRecord{
-  protected $_table = "sessions";
+class SessionModel extends ActiveRecord
+{
+    protected $_table = "sessions";
 
-  public $session_id;
-  public $php_id;
-  public $data;
-  public $click = 0;
-  public $created;
-  public $updated;
-  public $deleted = "No";
+    public $session_id;
+    public $php_id;
+    public $data;
+    public $click = 0;
+    public $created;
+    public $updated;
+    public $deleted = "No";
 
-  public function save(){
-    if(!$this->created){
-      $this->created = date("Y-m-d H:i:s");
+    public function save()
+    {
+        if(!$this->created) {
+            $this->created = date("Y-m-d H:i:s");
+        }
+        $this->updated = date("Y-m-d H:i:s");
+        $this->click++;
+        parent::save();
     }
-    $this->updated = date("Y-m-d H:i:s");
-    $this->click++;
-    parent::save();
-  }
 
-  public function delete(){
-    $this->deleted = "Yes";
-    $this->save();
-  }
+    public function delete()
+    {
+        $this->deleted = "Yes";
+        $this->save();
+    }
 
 }
