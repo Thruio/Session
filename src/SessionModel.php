@@ -30,7 +30,7 @@ class SessionModel extends ActiveRecord
 
     public function save()
     {
-        if(!$this->created) {
+        if (!$this->created) {
             $this->created = date("Y-m-d H:i:s");
         }
         $this->updated = date("Y-m-d H:i:s");
@@ -43,5 +43,4 @@ class SessionModel extends ActiveRecord
         $this->deleted = "Yes";
         $this->save();
     }
-
 }

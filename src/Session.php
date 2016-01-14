@@ -20,34 +20,34 @@ class Session
         @session_start();
     }
 
-    static public function get_session()
+    public static function get_session()
     {
-        if(!self::$_instance instanceof Session) {
+        if (!self::$_instance instanceof Session) {
             self::$_instance = new Session();
         }
         return self::$_instance;
     }
 
-    static public function get($key)
+    public static function get($key)
     {
         return Session::get_session()->_get($key);
     }
 
-    static public function set($key, $value)
+    public static function set($key, $value)
     {
         return Session::get_session()->_set($key, $value);
     }
 
-    static public function dispose($key)
+    public static function dispose($key)
     {
         return Session::get_session()->_dispose($key);
     }
 
     public function _get($key)
     {
-        if(isset($_SESSION[$key])) {
+        if (isset($_SESSION[$key])) {
             return unserialize($_SESSION[$key]);
-        }else{
+        } else {
             return false;
         }
     }
@@ -60,10 +60,10 @@ class Session
 
     public function _dispose($key)
     {
-        if(isset($_SESSION[$key])) {
+        if (isset($_SESSION[$key])) {
             unset($_SESSION[$key]);
             return true;
-        }else{
+        } else {
             return false;
         }
     }

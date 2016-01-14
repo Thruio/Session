@@ -4,7 +4,7 @@ namespace Thru\Session;
 class SessionHandler implements \SessionHandlerInterface
 {
 
-    public function open($savePath, $sessionName) 
+    public function open($savePath, $sessionName)
     {
         return true;
     }
@@ -18,12 +18,12 @@ class SessionHandler implements \SessionHandlerInterface
     {
         /* @var $session SessionModel */
         $session = SessionModel::search()->where('php_id', $id)->where('deleted', 'No')->execOne();
-        if(!$session instanceof SessionModel) {
+        if (!$session instanceof SessionModel) {
             $session = new SessionModel();
         }
-        if($session->data) {
+        if ($session->data) {
             return unserialize($session->data);
-        }else{
+        } else {
             return false;
         }
     }
@@ -32,7 +32,7 @@ class SessionHandler implements \SessionHandlerInterface
     {
         /* @var $session SessionModel */
         $session = SessionModel::search()->where('php_id', $id)->where('deleted', 'No')->execOne();
-        if(!$session instanceof SessionModel) {
+        if (!$session instanceof SessionModel) {
             $session = new SessionModel();
         }
         $session->php_id = $id;
@@ -52,11 +52,10 @@ class SessionHandler implements \SessionHandlerInterface
     public function gc($maxlifetime)
     {
         $created = date("Y-m-d H:i:s", time() - $maxlifetime);
-        foreach(SessionModel::search()->where('created', $created, '<')->where('deleted', 'No')->exec() as $session){
+        foreach (SessionModel::search()->where('created', $created, '<')->where('deleted', 'No')->exec() as $session) {
             /* @var $session SessionModel */
             $session->delete();
         }
         return true;
     }
 }
-
