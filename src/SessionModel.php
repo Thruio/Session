@@ -28,14 +28,14 @@ class SessionModel extends ActiveRecord
     public $updated;
     public $deleted = "No";
 
-    public function save()
+    public function save($automatic_reload = true)
     {
         if (!$this->created) {
             $this->created = date("Y-m-d H:i:s");
         }
         $this->updated = date("Y-m-d H:i:s");
         $this->click++;
-        parent::save();
+        parent::save($automatic_reload);
     }
 
     public function delete()
