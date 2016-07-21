@@ -3,7 +3,7 @@ namespace Thru\Session;
 
 use \Predis\Client as RedisClient;
 
-class SessionHandler implements \SessionHandlerInterface
+class RedisSessionHandler implements \SessionHandlerInterface
 {
 
     /** @var RedisClient */
