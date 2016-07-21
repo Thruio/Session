@@ -1,7 +1,7 @@
 <?php
 namespace Thru\Session;
 
-class SessionHandler implements \SessionHandlerInterface
+class MySQLSessionHandler implements \SessionHandlerInterface
 {
 
     public function open($savePath, $sessionName)

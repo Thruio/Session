@@ -6,15 +6,18 @@ class Session
     private static $_instance;
     const lifetime = 86400;
 
-    public function __construct()
+    public function __construct(\SessionHandlerInterface $sessionHandler = null)
     {
+        if(!$sessionHandler){
+            $sessionHandler = new MySQLSessionHandler();
+        }
         // server should keep session data for AT LEAST 1 day
         ini_set('session.gc_maxlifetime', Session::lifetime);
 
         // each client should remember their session id for EXACTLY 1 day
         session_set_cookie_params(Session::lifetime);
 
-        session_set_save_handler(new SessionHandler());
+        session_set_save_handler($sessionHandler);
 
         // Begin the Session
         @session_start();
